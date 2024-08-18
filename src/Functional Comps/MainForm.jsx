@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import UrlInput from './urlInput';
+import UrlInput from './UrlInput.jsx';
+import MetadataDisplay from './MetadataDisplay.jsx';
 
 export default function Form() {
 
@@ -44,6 +45,7 @@ export default function Form() {
                     />
                 ))}
                 <button type="submit">Submit</button>
+                {metadata.length > 0 && <MetadataDisplay metadata={metadata} />}
             </form>
         </div>
     )

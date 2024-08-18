@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-function UrlInput({ index, value, onChange }) {
+export default function UrlInput({ index, value, onChange }) {
     return (
         <div>
             <label>Url {index + 1}:</label>
@@ -11,7 +11,5 @@ function UrlInput({ index, value, onChange }) {
                 onChange={(e) => onChange(index, e)}
             />
         </div>
-    );
+    )
 }
-
-export default UrlInput;

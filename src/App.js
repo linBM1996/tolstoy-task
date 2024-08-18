@@ -1,11 +1,11 @@
-import Form from './Functional Comps/Form';
+import MainForm from './Functional Comps/MainForm';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header>Tolstoy Task</header>
-      <Form />
+      <MainForm />
     </div>
   );
 }
