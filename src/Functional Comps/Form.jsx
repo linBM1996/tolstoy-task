@@ -4,6 +4,7 @@ import UrlInput from './urlInput';
 export default function Form() {
 
     const [urls, setUrls] = useState(['', '', '']);
+    const [metadata, setMetadata] = useState([]);
 
     // Handle URL input changes
     const handleChange = (index, event) => {
@@ -12,10 +13,22 @@ export default function Form() {
         setUrls(newUrls); // Update the state with the new array
     };
 
-    // Handle form submission
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('URLs:', urls);
+        try {
+            const response = await fetch('http://localhost:3000/fetch-metadata', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ urls }),
+            });
+            const data = await response.json();
+            setMetadata(data);
+            console.log('metadata:', metadata);
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
 
     return (
