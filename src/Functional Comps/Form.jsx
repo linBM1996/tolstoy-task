@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import UrlInput from './UrlInput.jsx';
 import MetadataDisplay from './MetadataDisplay.jsx';
+import '../Styles/Form.css';
 
 export default function Form() {
 
@@ -33,20 +34,22 @@ export default function Form() {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <div>please enter 3 URLs:</div>
+        <div className="form-container">
+            <form onSubmit={handleSubmit} className="url-form">
+                <div className="form-title">Please Enter 3 URLs:</div>
                 {urls.map((url, index) => (
                     <UrlInput
                         key={index}
                         index={index}
                         value={url}
                         onChange={handleChange}
+                        className="url-input"
                     />
                 ))}
-                <button type="submit">Submit</button>
-                {metadata.length > 0 && <MetadataDisplay metadata={metadata} />}
+                <button type="submit" className="submit-button">Submit</button>
+
             </form>
+            {metadata.length > 0 && <MetadataDisplay metadata={metadata} />}
         </div>
     )
 }

@@ -1,0 +1,27 @@
+.metadata-display-container {
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background color for better contrast */
+    border-radius: 8px; /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 100%;
+    max-width: 800px; /* Limit the width of the container */
+    margin: 0 auto; /* Center the container */
+  }
+  
+  .metadata-display-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px; /* Space below the title */
+    color: #333; /* Dark grey color for the title */
+  }
+  
+  .metadata-display-list {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0;
+    margin: 0;
+  }
+  
+  .metadata-display-list-item {
+    margin-bottom: 16px; /* Space between list items */
+  }
+  

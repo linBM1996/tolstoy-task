@@ -1,17 +1,20 @@
 import React from 'react'
+import '../Styles/UrlMetadata.css';
 
 export default function UrlMetadata({ url, title, description, image, error }) {
   return (
-    <div>
+    <div className="url-metadata-container">
       <li>
-        <p>URL: {url}</p>
+        <p className={error ? 'url-metadata-error' : 'url-metadata-field'}>
+          URL: {url}
+        </p>
         {error ? (
-          <p>Error: {error}</p>
+          <p className="url-metadata-error">Error: {error}</p>
         ) : (
           <>
-            <p>Title: {title}</p>
-            <p>Description: {description}</p>
-            <p>Image: {image}</p>
+            <p className="url-metadata-field">Title: {title}</p>
+            <p className="url-metadata-field">Description: {description}</p>
+            <p className="url-metadata-field">Image: {image}</p>
           </>
         )}
       </li>

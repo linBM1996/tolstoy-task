@@ -1,0 +1,22 @@
+.url-metadata-container {
+    padding: 16px;
+    background-color: #ffffff; /* White background for the metadata items */
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-bottom: 16px; /* Space below each metadata item */
+  }
+  
+  .url-metadata-item {
+    margin: 8px 0; /* Space above and below each metadata field */
+  }
+  
+  .url-metadata-error {
+    color: #d9534f; /* Red color for error messages */
+    font-weight: bold; /* Bold text for error messages */
+  }
+  
+  .url-metadata-field {
+    color: #333; /* Dark grey text color for metadata fields */
+  }
+  

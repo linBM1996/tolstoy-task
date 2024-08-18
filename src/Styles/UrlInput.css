@@ -1,0 +1,19 @@
+.url-input-container {
+    margin-bottom: 16px; /* Space below each URL input */
+  }
+  
+  .url-input-label {
+    display: block; /* Make label occupy its own line */
+    margin-bottom: 8px; /* Space between label and input */
+    font-size: 16px; /* Font size for label */
+    font-weight: 500; /* Semi-bold font weight for label */
+    color: #333; /* Dark grey color for label text */
+  }
+  
+  .url-input-field {
+    width: 100%; /* Full width input */
+    padding: 8px; /* Padding inside the input */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  }
