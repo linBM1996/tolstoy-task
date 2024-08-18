@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import UrlInput from './urlInput';
 
 export default function Form() {
 
@@ -21,30 +22,14 @@ export default function Form() {
         <div>
             <form onSubmit={handleSubmit}>
                 <div>please enter 3 URLs:</div>
-                <div>
-                    <label>Url 1:</label>
-                    <input
-                        type="text"
-                        required
-                        onChange={(e) => handleChange(0, e)}
+                {urls.map((url, index) => (
+                    <UrlInput
+                        key={index}
+                        index={index}
+                        value={url}
+                        onChange={handleChange}
                     />
-                </div>
-                <div>
-                    <label>Url 2:</label>
-                    <input
-                        type="text"
-                        required
-                        onChange={(e) => handleChange(1, e)}
-                    />
-                </div>
-                <div>
-                    <label>Url 3:</label>
-                    <input
-                        type="text"
-                        required
-                        onChange={(e) => handleChange(2, e)}
-                    />
-                </div>
+                ))}
                 <button type="submit">Submit</button>
             </form>
         </div>
