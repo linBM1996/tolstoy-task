@@ -17,22 +17,22 @@ export default function Form() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-    
+
         try {
-/*             // Fetch the CSRF token
-            const tokenResponse = await fetch('http://localhost:3000/csrf-token');
-            const tokenData = await tokenResponse.json();
-            const csrfToken = tokenData.csrfToken; */
-    
+            /*             // Fetch the CSRF token
+                        const tokenResponse = await fetch('http://localhost:3000/csrf-token');
+                        const tokenData = await tokenResponse.json();
+                        const csrfToken = tokenData.csrfToken; */
+
             const response = await fetch('http://localhost:3000/fetch-metadata', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    /* 'X-CSRF-Token': csrfToken // Include CSRF token in the request headers */
+                    /*                     'X-CSRF-Token': [csrfToken] // Include CSRF token in the request headers */
                 },
                 body: JSON.stringify({ urls }),
             });
-    
+
             const data = await response.json();
             setMetadata(data);
             console.log('metadata:', metadata);
@@ -55,7 +55,6 @@ export default function Form() {
                     />
                 ))}
                 <button type="submit" className="submit-button">Submit</button>
-
             </form>
             {metadata.length > 0 && <MetadataDisplay metadata={metadata} />}
         </div>

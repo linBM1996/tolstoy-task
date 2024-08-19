@@ -12,7 +12,7 @@ const app = express();
 // Enable CORS and JSON parsing
 app.use(cors());
 app.use(express.json());
-//app.use(cookieParser());
+/* app.use(cookieParser()); */
 
 //---Security---
 
@@ -25,8 +25,7 @@ app.get('/csrf-token', (req, res) => {
     res.json({ csrfToken: req.csrfToken() });
 });
 // Apply CSRF protection to sensitive routes
-app.use('/fetch-metadata', csrfProtection);
- */
+app.use('/fetch-metadata', csrfProtection); */
 
 //---Rate Limiting---
 
