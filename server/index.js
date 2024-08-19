@@ -4,25 +4,29 @@ const cheerio = require('cheerio');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
-const csrf = require('csurf');
-const cookieParser = require('cookie-parser');
+/* const csrf = require('csurf');
+const cookieParser = require('cookie-parser'); */
 
 const app = express();
 
 // Enable CORS and JSON parsing
 app.use(cors());
 app.use(express.json());
+//app.use(cookieParser());
 
 //---Security---
 
 // Use Helmet to set secure HTTP headers
 app.use(helmet());
-// CSRF protection
-app.use(cookieParser());
+/* // CSRF protection
 const csrfProtection = csrf({ cookie: true });
+// Endpoint to get CSRF token
+app.get('/csrf-token', (req, res) => {
+    res.json({ csrfToken: req.csrfToken() });
+});
 // Apply CSRF protection to sensitive routes
 app.use('/fetch-metadata', csrfProtection);
-
+ */
 
 //---Rate Limiting---
 

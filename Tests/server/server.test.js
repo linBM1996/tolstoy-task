@@ -24,7 +24,7 @@ describe('POST /fetch-metadata', () => {
       expect(metadata).toHaveProperty('image');
     });
   });
-/* 
+
   it('should return 400 for invalid request body', async () => {
     const response = await request(app)
       .post('/fetch-metadata')
@@ -33,5 +33,5 @@ describe('POST /fetch-metadata', () => {
       .expect(400);
 
     expect(response.body).toHaveProperty('error', 'Please provide an array of URLs.');
-  }); */
+  });
 });
