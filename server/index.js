@@ -9,20 +9,20 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
+// Enable CORS and JSON parsing
+app.use(cors());
+app.use(express.json());
+
 //---Security---
 
 // Use Helmet to set secure HTTP headers
 app.use(helmet());
 // CSRF protection
+app.use(cookieParser());
 const csrfProtection = csrf({ cookie: true });
 // Apply CSRF protection to sensitive routes
 app.use('/fetch-metadata', csrfProtection);
 
-
-// Enable CORS, JSON parsing and cookieParser
-app.use(cors());
-app.use(express.json());
-app.use(cookieParser());
 
 //---Rate Limiting---
 
@@ -76,7 +76,15 @@ app.post('/fetch-metadata', async (req, res) => {
     }
 });
 
+// Global error handler
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ error: 'Internal Server Error' });
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+module.exports = app;

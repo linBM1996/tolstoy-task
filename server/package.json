@@ -15,5 +15,10 @@
     "express": "^4.19.2",
     "express-rate-limit": "^7.4.0",
     "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "chai": "^5.1.1",
+    "chai-http": "^5.0.0",
+    "mocha": "^10.7.3"
   }
 }
