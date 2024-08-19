@@ -2,11 +2,23 @@ const express = require('express');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 const cors = require('cors');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+// Set up rate limiting
+const limiter = rateLimit({
+    windowMs: 1000, // 1 second
+    max: 5, // Limit each IP to 5 requests per windowMs
+    message: 'Too many requests from this IP, please try again later.',
+});
+
+// Apply the rate limiter to the fetch-metadata endpoint
+app.use('/fetch-metadata', limiter);
+
 
 app.post('/fetch-metadata', async (req, res) => {
     const { urls } = req.body;
