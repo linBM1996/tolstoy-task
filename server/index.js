@@ -3,8 +3,12 @@ const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
 
 const app = express();
+
+// Use Helmet to set secure HTTP headers
+app.use(helmet());
 
 app.use(cors());
 app.use(express.json());
@@ -20,6 +24,7 @@ const limiter = rateLimit({
 app.use('/fetch-metadata', limiter);
 
 
+//fetch metadata for URLs and handle errors
 app.post('/fetch-metadata', async (req, res) => {
     const { urls } = req.body;
 
