@@ -8,39 +8,25 @@ This is a full-stack application that allows users to input a list of URLs, fetc
 # Setup Instructions
 To run the server and the client, use two separate terminals.
 
-Back-End (Node.js)
+## Back-End (Node.js)
 Navigate to the server directory:
-
-bash
-Copy code
 cd server
-Install the dependencies:
 
-bash
-Copy code
+Install the dependencies:
 npm install
+
 Start the server:
-
-bash
-Copy code
 node index.js
-Front-End (React)
+
+## Front-End (React)
 Install the dependencies:
-
-bash
-Copy code
 npm install
-Start the React application:
 
-bash
-Copy code
+Start the React application:
 npm start
 
-Running Tests
+## Running Tests
 Run the following command in the root directory:
-
-bash
-Copy code
 npm test
 
 # Additional Features
