@@ -16,12 +16,10 @@ const corsOptions = {
 
 // Enable CORS and JSON parsing
 app.use(cors(corsOptions));
-//app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
 //---Security---
-
 // Use Helmet to set secure HTTP headers
 app.use(helmet());
 // CSRF protection
@@ -34,7 +32,6 @@ app.get('/csrf-token', csrfProtection, (req, res) => {
 app.use('/fetch-metadata', csrfProtection);
 
 //---Rate Limiting---
-
 // Set up rate limiting
 const limiter = rateLimit({
     windowMs: 1000, // 1 second
@@ -48,13 +45,13 @@ app.use('/fetch-metadata', limiter);
 
 //fetch metadata for URLs and handle errors
 app.post('/fetch-metadata', async (req, res) => {
-    const { urls } = req.body;
-
-    if (!urls || !Array.isArray(urls)) {
-        return res.status(400).json({ error: 'Please provide an array of URLs.' });
-    }
-
     try {
+        const { urls } = req.body;
+
+        if (!urls || !Array.isArray(urls)) {
+            return res.status(400).json({ error: 'Please provide an array of URLs.' });
+        }
+
         const metadataPromises = urls.map(async (url) => {
             try {
                 const response = await fetch(url);
@@ -80,7 +77,7 @@ app.post('/fetch-metadata', async (req, res) => {
         res.json(metadata);
 
     } catch (error) {
-        console.error('Error fetching metadata:', error);
+        console.error('Error in /fetch-metadata route:', error.message);
         res.status(500).json({ error: 'An error occurred while fetching metadata.' });
     }
 });
