@@ -15,22 +15,24 @@ export default function Form() {
         setUrls(newUrls); // Update the state with the new array
     };
 
+    const fetchCsrfToken = async () => {
+        const response = await fetch('/csrf-token');
+        const data = await response.json();
+        return data.csrfToken;
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+        const csrfToken = await fetchCsrfToken();
         try {
-            /*             // Fetch the CSRF token
-                        const tokenResponse = await fetch('http://localhost:3000/csrf-token');
-                        const tokenData = await tokenResponse.json();
-                        const csrfToken = tokenData.csrfToken; */
-
             const response = await fetch('http://localhost:3000/fetch-metadata', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    /*                     'X-CSRF-Token': [csrfToken] // Include CSRF token in the request headers */
+                    'X-CSRF-Token': [csrfToken] // Include CSRF token in the request headers
                 },
                 body: JSON.stringify({ urls }),
+                credentials: 'include' // Ensure cookies are sent
             });
 
             const data = await response.json();
