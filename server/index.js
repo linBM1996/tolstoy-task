@@ -9,8 +9,21 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
+const allowedOrigins = [
+    'http://localhost:3001', // Your local development server
+    'https://your-vercel-app-url.vercel.app' // Your Vercel deployment
+  ];
+
 const corsOptions = {
-    origin: 'http://localhost:3001',
+     origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      // Allow the request if the origin is in the allowedOrigins array or if there is no origin (e.g., server-side requests)
+      callback(null, true);
+    } else {
+      // Reject the request if the origin is not allowed
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
     credentials: true, // Allow cookies
 };
 
@@ -43,12 +56,12 @@ const limiter = rateLimit({
 app.use('/fetch-metadata', limiter);
 
 
-//fetch metadata for URLs and handle errors
 app.post('/fetch-metadata', async (req, res) => {
     try {
         const { urls } = req.body;
 
         if (!urls || !Array.isArray(urls)) {
+            console.error('Invalid input:', req.body); // Log invalid input
             return res.status(400).json({ error: 'Please provide an array of URLs.' });
         }
 
@@ -56,6 +69,7 @@ app.post('/fetch-metadata', async (req, res) => {
             try {
                 const response = await fetch(url);
                 if (!response.ok) {
+                    console.error(`Failed to fetch URL: ${url}, Status: ${response.status}`); // Log fetch failure
                     throw new Error('Failed to fetch the URL');
                 }
                 const html = await response.text();

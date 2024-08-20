@@ -37,7 +37,7 @@ export default function Form() {
 
             const data = await response.json();
             setMetadata(data);
-            console.log('metadata:', metadata);
+            console.log('metadata:', data);
         } catch (error) {
             console.error('Error:', error);
         }
