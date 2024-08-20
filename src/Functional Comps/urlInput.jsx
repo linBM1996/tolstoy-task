@@ -3,7 +3,6 @@ import '../Styles/UrlInput.css';
 
 export default function UrlInput({ index, value, onChange }) {
     const inputId = `url-input-${index}`;
-
     return (
         <div className="url-input-container">
             <label htmlFor={inputId} className="url-input-label">
@@ -20,5 +19,5 @@ export default function UrlInput({ index, value, onChange }) {
                 placeholder={`Enter URL ${index + 1}`}
             />
         </div>
-    );
+    )
 }
