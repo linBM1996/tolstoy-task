@@ -1,7 +1,7 @@
 import React from 'react';
 import '../Styles/UrlInput.css';
 
-export default function UrlInput({ index, value, onChange }) {
+export default function Input({ index, value, onChange }) {
     const inputId = `url-input-${index}`;
     return (
         <div className="url-input-container">

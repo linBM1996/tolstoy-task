@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import UrlInput from './UrlInput.jsx';
+import Input from './Input.jsx';
 import MetadataDisplay from './MetadataDisplay.jsx';
 import '../Styles/Form.css';
 
@@ -48,7 +48,7 @@ export default function Form() {
             <form onSubmit={handleSubmit} className="url-form">
                 <div className="form-title">Please Enter 3 URLs:</div>
                 {urls.map((url, index) => (
-                    <UrlInput
+                    <Input
                         key={index}
                         index={index}
                         value={url}
