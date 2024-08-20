@@ -11,7 +11,7 @@ const app = express();
 
 const allowedOrigins = [
     'http://localhost:3001', // Your local development server
-    'https://your-vercel-app-url.vercel.app' // Your Vercel deployment
+    'https://tolstoy-task-8epkyiycc-lin-ben-meirs-projects.vercel.app/' // Your Vercel deployment
   ];
 
 const corsOptions = {
