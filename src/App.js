@@ -42,7 +42,6 @@ const mainContentStyle = {
   alignItems: 'center',
   justifyContent: 'center', // Center content vertically
   width: '100%',
-  maxWidth: '800px',
   flex: '1 0 auto',
   overflowY: 'auto',
   padding: '20px',
