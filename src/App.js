@@ -14,17 +14,6 @@ function App() {
 
 export default App;
 
-const appStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center', // Center horizontally
-  justifyContent: 'center', // Center vertically
-  height: '100vh', // Full viewport height
-  backgroundColor: '#f0f2f5', // Background color for the whole app
-  padding: '20px', // Padding around the main container
-  boxSizing: 'border-box', // Include padding in the total width/height
-};
-
 const headerStyle = {
   backgroundColor: '#007bff',
   color: 'white',
